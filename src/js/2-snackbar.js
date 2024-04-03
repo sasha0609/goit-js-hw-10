@@ -3,18 +3,17 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const submit = document.querySelector('[type="submit"]');
 const delay = document.querySelector('.delay');
-const fulfilled = document.querySelector('.fulfilled');
-const rejected = document.querySelector('.rejected');
+const radioBtnPromise = document.querySelector('[name="state"]');
 
 submit.addEventListener('click', event => {
   event.preventDefault();
 
   new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (fulfilled.checked) {
-        resolve('resolve');
-      } else if (rejected.checked) {
-        reject('reject');
+      if (radioBtnPromise.checked) {
+        resolve(resolve);
+      } else {
+        reject(reject);
       }
     }, delay.value);
   })
@@ -31,6 +30,3 @@ submit.addEventListener('click', event => {
       });
     });
 });
-// function someFunction() {
-//   console.log('import');
-// }

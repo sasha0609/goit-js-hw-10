@@ -2,13 +2,12 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-// import someFunction from './2-snackbar.js';
-// someFunction();
 
 const btn = document.querySelector('[type="button"]');
 const input = document.querySelector('#datetime-picker');
-const value = document.querySelectorAll('.value');
+const timerElements = document.querySelectorAll('.value');
 let userSelectedDate = [];
+btn.disabled = true;
 
 const options = {
   enableTime: true,
@@ -24,7 +23,6 @@ const options = {
         position: 'topRight',
         message: 'Please choose date in the future',
       });
-      btn.disabled = true;
     } else {
       btn.disabled = false;
     }
@@ -61,18 +59,20 @@ btn.addEventListener('click', event => {
     event.preventDefault();
     let timeBeforeDate = userSelectedDate - new Date();
     input.disabled = true;
+    btn.disabled = true;
 
     if (timeBeforeDate < 1) {
-      btn.disabled = true;
+      btn.disabled = false;
       input.disabled = false;
       clearInterval(repeatTime);
       return;
     }
+
     const timer = convertMs(timeBeforeDate);
 
-    value[0].innerText = timer.days.toString().padStart(2, '0');
-    value[1].innerText = timer.hours.toString().padStart(2, '0');
-    value[2].innerText = timer.minutes.toString().padStart(2, '0');
-    value[3].innerText = timer.seconds.toString().padStart(2, '0');
+    timerElements[0].innerText = timer.days.toString().padStart(2, '0');
+    timerElements[1].innerText = timer.hours.toString().padStart(2, '0');
+    timerElements[2].innerText = timer.minutes.toString().padStart(2, '0');
+    timerElements[3].innerText = timer.seconds.toString().padStart(2, '0');
   }, 1000);
 });
