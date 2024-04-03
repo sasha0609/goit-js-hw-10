@@ -13,10 +13,8 @@ submit.addEventListener('click', event => {
     setTimeout(() => {
       if (fulfilled.checked) {
         resolve('resolve');
-        console.log('got it');
       } else if (rejected.checked) {
         reject('reject');
-        console.log('nonono mister fish');
       }
     }, delay.value);
   })
@@ -33,3 +31,6 @@ submit.addEventListener('click', event => {
       });
     });
 });
+// function someFunction() {
+//   console.log('import');
+// }

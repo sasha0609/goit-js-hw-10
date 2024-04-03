@@ -2,6 +2,8 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+// import someFunction from './2-snackbar.js';
+// someFunction();
 
 const btn = document.querySelector('[type="button"]');
 const input = document.querySelector('#datetime-picker');
